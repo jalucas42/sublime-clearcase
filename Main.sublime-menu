@@ -1,19 +1,22 @@
-[
-    {
-        "id": "help"
-    },
-    {
-        "caption": "Clearcase",
-        "children": [
-            { "command": "clearcase_explorer", "caption": "Clearcase explorer" },
-            { "command": "clearcase_checkout", "caption": "Clearcase checkout" },
-            { "command": "clearcase_checkin", "caption": "Clearcase checkin" },
-            { "command": "clearcase_vtree", "caption": "Clearcase version tree" },
-            { "command": "clearcase_history", "caption": "Clearcase history" },
-            { "command": "clearcase_prev", "caption": "Clearcase compare previous" },
-            { "command": "clearcase_unco", "caption": "Clearcase undo checkout" },
-            { "command": "clearcase_annotate", "caption": "Clearcase annotate" }
-        ]
-    },
-
-]
+//// JAL: Don't add the Clearcase commands to the main menu, as the is_enabled() 
+//// function in the commands performs file accesses, which slows down the menus.
+//[
+//    {
+//        "id": "help"
+//    },
+//    {
+//        "caption": "Clearcase",
+//        "children": [
+//            { "command": "clearcase_checkout", "caption": "Check out" },
+//            { "command": "clearcase_checkout_unreserved", "caption": "Check out (unreserved)" },
+//            { "command": "clearcase_checkin", "caption": "Check in" },
+//            { "command": "clearcase_vtree", "caption": "Version tree (doesn't work)" },
+//            //{ "command": "clearcase_history", "caption": "Clearcase history" },
+//            { "command": "clearcase_prev", "caption": "Compare with previous version" },
+//            { "command": "clearcase_unco", "caption": "Undo checkout" },
+//            { "command": "clearcase_newcin", "caption": "Add to Clearcase" },
+//            //{ "command": "clearcase_annotate", "caption": "Clearcase annotate" }
+//        ]
+//    },
+//
+//]
