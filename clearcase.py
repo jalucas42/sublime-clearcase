@@ -243,7 +243,7 @@ class ClearcaseCheckinCommand(ClearcaseCommand):
         self.step1();
 
     def step1(self):        
-        exiting_comment = self.cc.get_current_comment(self.window.active_view().file_name())
+        existing_comment = self.cc.get_current_comment(self.window.active_view().file_name())
         self.window.show_input_panel('Comment: ', existing_comment, self.step2, None, None)
 
     def step2(self, val):
