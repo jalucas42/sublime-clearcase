@@ -3,14 +3,17 @@
     {
         "caption": "Clearcase",
         "children": [
-            { "command": "clearcase_explorer", "caption": "Clearcase explorer" },
-            { "command": "clearcase_checkout", "caption": "Clearcase checkout" },
-            { "command": "clearcase_checkin", "caption": "Clearcase checkin" },
-            { "command": "clearcase_vtree", "caption": "Clearcase version tree" },
-            { "command": "clearcase_history", "caption": "Clearcase: history" },
-            { "command": "clearcase_prev", "caption": "Clearcase compare previous" },
-            { "command": "clearcase_unco", "caption": "Clearcase undo checkout" },
-            { "command": "clearcase_annotate", "caption": "Clearcase annotate" }
+            { "command": "clearcase_find_checkouts", "caption": "Find checkouts", "args": {"paths": []} },
+
+            { "command": "clearcase_checkout", "caption": "Check out", "args": {"paths": []} },
+            { "command": "clearcase_checkout_unreserved", "caption": "Check out (unreserved)", "args": {"paths": []} },
+            { "command": "clearcase_checkin", "caption": "Check in", "args": {"paths": []} },
+            { "command": "clearcase_vtree", "caption": "Version tree (doesn't work)", "args": {"paths": []} },
+            //{ "command": "clearcase_history", "caption": "Clearcase history" },
+            { "command": "clearcase_prev", "caption": "Compare with previous version", "args": {"paths": []} },
+            { "command": "clearcase_unco", "caption": "Undo checkout", "args": {"paths": []} },
+            { "command": "clearcase_newcin", "caption": "Add to Clearcase", "args": {"paths": []} },
+            //{ "command": "clearcase_annotate", "caption": "Clearcase annotate" }
         ]
     }
 ]
