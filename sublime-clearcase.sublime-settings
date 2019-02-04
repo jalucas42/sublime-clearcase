@@ -1,8 +1,8 @@
 {
 
-    "clearcase.force_menu_ena" : true          , // Set true to enable context menus regardless of the select file status.
+    "clearcase.force_menu_ena" : false          , // Set true to enable context menus regardless of the select file status.
     "clearcase.cleartool_path" : "cleartool" , // Path to cleartool EXE
     "clearcase.pretend"        : false       , // Debug. Set true to print cleartool commands rather than running.
-    "clearcase.debug"          : true       , // Debug. Set true to enable debug print statements
+    "clearcase.debug"          : false       , // Debug. Set true to enable debug print statements
     
 }

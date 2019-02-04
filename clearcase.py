@@ -121,6 +121,7 @@ class ClearcaseHelper:
             element["pred_filepath"]   = fields[7]
             element["user"]            = fields[5]
             element["is_dir"]          = os.path.isdir(filepath)
+            element["is_in_view"]      = True if re.match('^/view/', filepath) else False;
 
             # Cache the info
             self.cache[filepath] = element
@@ -133,10 +134,8 @@ class ClearcaseHelper:
     def get_current_comment(self, filepath):       
         return self.get_info(filepath)["comment"]
 
-
     def is_checkedout(self, filepath):
         return self.get_info(filepath)["is_checkedout"]
-
 
     def is_checkedin(self, filepath):
         return not(self.get_info(filepath)["is_private"]) and not(self.get_info(filepath)["is_checkedout"])
@@ -149,6 +148,9 @@ class ClearcaseHelper:
 
     def is_dir(self, filepath):
         return self.get_info(filepath)["is_dir"]
+
+    def is_in_view(self, filepath):
+        return self.get_info(filepath)["is_in_view"]
 
 
 
@@ -165,6 +167,10 @@ class ClearcaseCommand(sublime_plugin.WindowCommand):
 
     def run(self):
         None
+
+    def print_debug(self, str):
+        if self.debug:
+            print(str)
 
     def get_files(self):
 
@@ -213,8 +219,19 @@ class ClearcaseCommand(sublime_plugin.WindowCommand):
 
 
     def is_enabled(self):
-        return ( len(self.filepaths) > 0 )
 
+        # Make sure all files are under /view/...
+        for filepath in self.filepaths:
+            if not self.cc.is_in_view(filepath):
+                self.print_debug(self.cc.get_info(filepath))
+                return False
+
+        # There needs to be at least one file available
+        if ( len(self.filepaths) < 1 ):
+            return False
+
+        return True
+            
 
 class ClearcaseCheckoutCommand(ClearcaseCommand):
     reserved_switch = '-reserved'
@@ -535,6 +552,7 @@ class ClearcaseFindCheckoutsCommand(ClearcaseCommand):
         ]
         cmd.extend(self.filepaths)
 
+        # FIXME: find_checkouts is coming up blank for some reason.
         self.pp.pprint(cmd)
         
         self.ph.execute_bg(cmd)
